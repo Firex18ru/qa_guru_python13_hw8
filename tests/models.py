@@ -55,8 +55,6 @@ class Cart:
 
     def buy(self):
         for product, count in self.products.items():
-            if product.check_quantity(count):
-                product.buy(count)
-        else:
-            raise ValueError
+            product.buy(count)
+
         self.clear()
