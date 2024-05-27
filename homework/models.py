@@ -59,5 +59,4 @@ class Cart:
                 product.buy(count)
         else:
             raise ValueError
-
         self.clear()
