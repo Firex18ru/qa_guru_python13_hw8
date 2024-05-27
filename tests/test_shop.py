@@ -19,6 +19,13 @@ def not_empty_cart(cart, product):
     return cart
 
 
+@pytest.fixture
+def cart_with_products(product):
+    cart = Cart()
+    cart.add_product(product, 4)
+    return cart
+
+
 class TestProducts:
 
     def test_product_check_quantity(self, product):
@@ -61,3 +68,7 @@ class TestCart:
         cart.add_product(product, 1001)
         with pytest.raises(ValueError):
             cart.buy()
+
+    def test_get_total_price(self, cart, cart_with_products):
+        assert cart.get_total_price() == 0
+        assert cart_with_products.get_total_price() == 400
