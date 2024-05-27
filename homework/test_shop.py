@@ -24,7 +24,7 @@ class TestProducts:
     def test_product_check_quantity(self, product):
         assert product.check_quantity(1000)
         assert product.check_quantity(600)
-        assert product.check_quantity(1111)
+        assert product.check_quantity(1111) is False
 
     def test_product_buy(self, product):
         expected = product.quantity - 1
