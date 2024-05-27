@@ -5,23 +5,26 @@ from homework.models import Product, Cart
 @pytest.fixture
 def product():
     return Product("book", 100, "This is a book", 1000)
+
+
 @pytest.fixture
 def cart():
     cart = Cart()
     return cart
 
+
 @pytest.fixture
 def not_empty_cart(cart, product):
     cart.add_product(product)
     return cart
-class TestProducts:
 
+
+class TestProducts:
 
     def test_product_check_quantity(self, product):
         assert product.check_quantity(1000)
         assert product.check_quantity(600)
         assert product.check_quantity(1111)
-
 
     def test_product_buy(self, product):
         expected = product.quantity - 1

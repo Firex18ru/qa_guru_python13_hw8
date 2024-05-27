@@ -1,5 +1,4 @@
 class Product:
-
     name: str
     price: float
     description: str
@@ -14,8 +13,8 @@ class Product:
     def check_quantity(self, quantity) -> bool:
         return self.quantity >= quantity
 
-
     def buy(self, quantity):
+
         if self.check_quantity(quantity):
             self.quantity -= quantity
         else:
@@ -26,9 +25,6 @@ class Product:
 
 
 class Cart:
-
-
-
     products: dict[Product, int]
 
     def __init__(self):
@@ -40,7 +36,6 @@ class Cart:
             self.products[product] += buy_count
         else:
             self.products[product] = buy_count
-
 
     def remove_product(self, product: Product, remove_count=None):
         if product in self.products:
@@ -59,8 +54,10 @@ class Cart:
         return total
 
     def buy(self):
-       for product, thing in self.products.items():
-           if product.quantity < thing:
-               raise ValueError
-       else:
-           product.buy(thing)
+        for product, count in self.products.items():
+            if product.check_quantity(count):
+                product.buy(count)
+        else:
+            raise ValueError
+
+        self.clear()
