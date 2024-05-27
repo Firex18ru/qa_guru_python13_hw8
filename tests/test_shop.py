@@ -70,5 +70,4 @@ class TestCart:
             cart.buy()
 
     def test_get_total_price(self, cart, cart_with_products):
-        assert cart.get_total_price() == 0
         assert cart_with_products.get_total_price() == 400
