@@ -38,12 +38,13 @@ class TestCart:
     def test_product_clear_cart(self, product, not_empty_cart):
         not_empty_cart.remove_product(product)
         assert not_empty_cart.products == {}
+
     def test_clear(self, not_empty_cart):
         not_empty_cart.clear()
         assert not not_empty_cart.products
+
     def test_add_product_to_empty_cart(self, cart, product):
         cart.add_product(product)
-
         assert product in cart.products
         assert cart.products[product] == 1
 
